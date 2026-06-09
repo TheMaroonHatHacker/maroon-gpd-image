@@ -25,6 +25,28 @@ modules:
       packages:
         - bazaar
         - lutris
+        - sunshine
+  - type: script
+    snippets:
+      - |
+        set -eoux pipefail
+
+        # Remove Sunshine RPM if somehow present
+        dnf5 remove -y --no-autoremove sunshine 2>/dev/null || true
+
+        # Remove the sunshine post-install script baked into the image
+        rm -f /usr/libexec/sunshine-postinst
+
+        # Remove any sunshine systemd service files
+        rm -f /usr/lib/systemd/user/sunshine.service \
+               /usr/lib/systemd/system/sunshine.service
+
+        # Block the Flatpak via the blocklist so Bazzite Portal won't offer it
+        BLOCKLIST=/usr/share/ublue-os/flatpak-blocklist
+        if [ -f "$BLOCKLIST" ]; then
+          grep -qxF 'dev.lizardbyte.app.Sunshine' "$BLOCKLIST" \
+            || echo 'dev.lizardbyte.app.Sunshine' >> "$BLOCKLIST"
+        fi
 
   - type: default-flatpaks
     configurations:
