@@ -26,6 +26,7 @@ modules:
         - bazaar
         - lutris
         - sunshine
+        - kde-ptyxis
   - type: script
     snippets:
       - |
