@@ -35,6 +35,8 @@ modules:
         rm -f /usr/libexec/sunshine-postinst 2>/dev/null || true
         rm -f /usr/lib/systemd/user/sunshine.service 2>/dev/null || true
         rm -f /usr/lib/systemd/system/sunshine.service 2>/dev/null || true
+        rm -f /usr/share/applications/dev.lizardbyte.app.Sunshine.desktop
+        rm -f /usr/share/applications/dev.lizardbyte.app.Sunshine.terminal.desktop
 
 
   - type: default-flatpaks
