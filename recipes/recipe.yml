@@ -26,7 +26,8 @@ modules:
         - bazaar
         - lutris
         - sunshine
-        - kde-ptyxis
+        - ptyxis
+        - webapp-manager
   - type: script
     snippets:
       - |
